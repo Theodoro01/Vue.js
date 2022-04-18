@@ -3,7 +3,7 @@
         
         <h2>Name:{{cliente.name}}</h2>
         <hr>
-        <p> Email: {{cliente.email}}</p>
+        <p> Email: {{processarEmail}}</p>
         <p v-if="showNumber === true">Phone number: {{cliente.number}}</p>
         <p v-else> Usuario não quer mostrar seu numero</p>
         <button @click="mudarCor"> Mudar cor!</button>
@@ -36,6 +36,11 @@ export default{
         },
         testar: function(){
             alert("Isso é um alert!")
+        }
+    },
+    computed:{
+        processarEmail(){
+            return this.cliente.email.toUpperCase();
         }
     }
 
