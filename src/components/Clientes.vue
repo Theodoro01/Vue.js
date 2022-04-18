@@ -8,6 +8,7 @@
         <p v-else> Usuario não quer mostrar seu numero</p>
         <button @click="mudarCor"> Mudar cor!</button>
         <button @click="eventoDelete"> Deletar</button>
+        <h4>Id Especial: {{idEspecial}}</h4>
     </div>
 </template>
 
@@ -41,6 +42,9 @@ export default{
     computed:{
         processarEmail(){
             return this.cliente.email.toUpperCase();
+        },
+        idEspecial: function(){
+            return (this.cliente.email + this.cliente.name + this.cliente.id).toUpperCase();
         }
     }
 
