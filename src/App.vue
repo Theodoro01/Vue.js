@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h2>Cadastro: </h2>
-    <small id="Erro" v-show="deuErro">O nome é invalido, tente novamente! </small><br>
+    <small id="Erro" v-show="deuErro"> O nome é invalido, tente novamente! </small><br>
     <input type="text" placeholder="name" v-model="nameField"><br>
     <input type="email" placeholder="email" v-model="emailField"><br>
     <input type="number" placeholder="phone number" v-model="numberField"><br>
@@ -64,8 +64,10 @@ export default {
       }
     },
     deletarUsuario: function($event){
-      console.log("recebendo evento.")
-      console.log($event.clienteId)
+      console.log("OLA")
+      var id = $event.clienteId;
+      var novoArray = this.clientes.filter(cliente => cliente.id != id);
+      this.clientes = novoArray;
     }
   }
 }

@@ -33,6 +33,9 @@ export default{
         },
         eventoDelete: function(){
             this.$emit("meDelete",{clienteId: this.cliente.id ,msg: "OLA", component: this});
+        },
+        testar: function(){
+            alert("Isso é um alert!")
         }
     }
 
