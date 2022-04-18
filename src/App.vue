@@ -7,7 +7,7 @@
     <input type="number" placeholder="phone number" v-model="numberField"><br>
     <button @click="cadastrarUsuario"> Cadastrar</button>
     <hr>  
-    <div v-for="cliente in clientes" :key="cliente.id">
+    <div v-for="cliente in orderClientes" :key="cliente.id">
        <Clientes :cliente="cliente" :showNumber="true" @meDelete="deletarUsuario($event)"/>
     </div> 
 
@@ -15,8 +15,8 @@
 </template>
 
 <script>
- 
-import Clientes from './components/Clientes.vue'
+import _ from 'lodash';
+import Clientes from './components/Clientes.vue';
 
 export default {
   name: 'App',
@@ -68,6 +68,11 @@ export default {
       var id = $event.clienteId;
       var novoArray = this.clientes.filter(cliente => cliente.id != id);
       this.clientes = novoArray;
+    }
+  },
+  computed: {
+    orderClientes: function() {
+      return _.orderBy(this.clientes, ['name'], ['asc']);
     }
   }
 }
